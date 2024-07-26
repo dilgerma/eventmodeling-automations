@@ -2,14 +2,12 @@ package de.nebulit.storearchive.internal
 
 import de.nebulit.common.Processor
 import de.nebulit.domain.commands.storearchive.StoreArchiveCommand
-import de.nebulit.events.ArchiveRequestedEvent
-import de.nebulit.events.ReportFailedEvent
-import de.nebulit.events.ReportRequestedEvent
-import de.nebulit.events.ReportStoredEvent
+import de.nebulit.events.*
 import java.io.File
 import java.util.UUID
 import mu.KotlinLogging
 import org.axonframework.commandhandling.gateway.CommandGateway
+import org.axonframework.modelling.saga.EndSaga
 import org.axonframework.modelling.saga.SagaEventHandler
 import org.axonframework.modelling.saga.StartSaga
 import org.axonframework.queryhandling.QueryGateway
@@ -59,6 +57,11 @@ class ArchiveGeneratorProcessor : Processor {
     fun on(event: ArchiveRequestedEvent) {
         aggregateId = event.aggregateId
         reportname = event.reportname
+    }
+
+    @EndSaga
+    @SagaEventHandler(associationProperty = "aggregateId")
+    fun on(event: ReportArchiveStoredEvent) {
     }
 
     private fun processArchive() {
