@@ -1,23 +1,13 @@
-## Nebulit GmbH - Eventmodeling Template
+## Modeling Automations
 
 ### Setup
 
-Slices sind im _root_ Package (wie im Generator angegeben) als Packages definiert.
-
-### Todos nach der initialen Generierung
-
-Im Code sind TODOs definiert für die Stellen die angepasst werden müssen.
-Der Generator trifft bestimmte Grundannahmen (aggregateIds sind UUIDs beispielsweise).
-
-Wird von diesen Annahmen abgewichen kompiliert der Code ggf. nicht sofort sondern muss leicht
-angepasst werden.
-
-Ihre Code Richtlinien sind natürlich führend, daher ist es erwartungskonform dass Code
-nicht sofort kompiliert (es sollten aber wirklich nur kleine Anpassungen notwendig sein).
+Slices sind im de.nebulit Package (wie im Generator angegeben) als Packages definiert.
 
 ### Start der Applikation
 
 Zum Start des Services kann die Klasse _ApplicationStarter_ verwendet werden in _src/test/kotlin_.
+
 Warum in _test_?
 
 Diese Klasse startet die komplette Umgebung (inkl. Postgres und ggf. Kafka über TestContainers)
@@ -31,3 +21,13 @@ Aggregates liegen im Package "domain"
 Slices haben jeweils ein isoliertes Package <sliceName>
 
 Package "common" enthält einige Interfaces für die generelle Struktur.
+
+Die Anwendung startet auf Port 8080.
+
+[SWAGGER UI](http://localhost:8080/swagger-ui/index.html)
+
+[Nebulit GmbH](https://www.nebulit.de)
+
+[Miro Eventmodell](https://miro.com/app/board/uXjVKyw_cAI=/)
+
+[Eventmodeling Tooling in Miro](https://eventmodelers.de/eventmodeling-tooling)
